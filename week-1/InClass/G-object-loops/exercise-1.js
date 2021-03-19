@@ -7,7 +7,12 @@ const studentGrades = {
     george: 17,
     abdul: 19,
   };
-  
+  /*for (const key in flowers) {
+    console.log(`${key}: ${flowers[key]}`);
+  }*/
+  for (const key in studentGrades) {
+    console.log(`${key}: ${studentGrades[key]}`)
+  }
   // Prints
   // TOM - 20
   // ABDUL - 19
