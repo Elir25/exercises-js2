@@ -60,6 +60,9 @@ let restaurant1 = {
     restaurants: restaurants,
     findAvailableRestaurants: function (numberOfPeople) {
       // Complete here
+      /*Define a method findAvailableRestaurants which takes a number of people in parameter and returns
+all the restaurant names which have the required number of seats available at the moment.*/
+       return this.restaurants.filter(numberOfPeople => this.restaurants.totalSeats < numberOfPeople);
     },
     findRestaurantServingDish: function (dishName) {
       // Complete here
