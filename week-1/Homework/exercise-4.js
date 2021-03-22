@@ -62,13 +62,23 @@ let restaurant1 = {
       // Complete here
       /*Define a method findAvailableRestaurants which takes a number of people in parameter and returns
 all the restaurant names which have the required number of seats available at the moment.*/
-       return this.restaurants.filter(numberOfPeople => this.restaurants.totalSeats < numberOfPeople);
+       return restaurants.filter(item => (item.totalSeats - item.numberOfCustomers) >= numberOfPeople)
+       .map(item => item.name);
+
     },
     findRestaurantServingDish: function (dishName) {
-      // Complete here
+      // Complete here 
+      return restaurants.filter(rest => rest.menu.includes(dishName))
+      .map(rest => rest.name);
+      /*Define a method findRestaurantServingDish which takes a dish name in parameter and returns
+      all the restaurant names serving this dish.*/
     },
     countNumberOfRestaurantsInArea: function (area) {
       // Complete here
+      return restaurants.filter(item => item.address.area.includes(area)).length;
+      /*3) Define a method countNumberOfRestaurantsInArea which takes an area of Glasgow in parameter (center, west),
+    and returns the number of restaurants in this area.
+    */
     },
   };
   

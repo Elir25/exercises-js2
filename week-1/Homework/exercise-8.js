@@ -50,6 +50,12 @@ var mentors = [
     skills: ["JS","React","Node"],
     class: "Mar1",
     studentLikes: 0,
+    addStudentLikes: function() {
+      return this.studentLikes = this.studentLikes + 1;
+    },
+    addSkill: function(newSkill) {
+      return this.skills.push(newSkill)
+    },
     job:
       {
         company: "Google",
@@ -63,6 +69,9 @@ var mentors = [
     skills: ["Play football"],
     class: "Mar3",
     studentLikes: 0,
+    addSkill: function(newSkill) {
+      return this.skills.push(newSkill)
+    },
     job:
       {
         company: "FC Barcelona",
@@ -76,6 +85,9 @@ var mentors = [
     skills: ["React","Angular","Python","Node"],
     class: "Mar4",
     studentLikes: 0,
+    addSkill: function(newSkill) {
+      return this.skills.push(newSkill)
+    },
     job:
       {
         company: "Facebook",
@@ -89,6 +101,9 @@ var mentors = [
     skills: ["HTML","JS","React"],
     class: "Mar2",
     studentLikes: 0,
+    addSkill: function(newSkill) {
+      return this.skills.push(newSkill)
+    },
     job:
       {
         company: "Amazon",
@@ -99,5 +114,56 @@ var mentors = [
 
 ];
 
+
 //YOUR CODE HERE
 
+//step 1:
+/*1. Loop through the array, and for each object, `console.log()` out the sentence only for
+mentors that are in Barcelona and one of the skills is React
+"Hi, my name is {firstName} {lastName}. I work in Barcelona and i know React."*/
+
+mentors.forEach(itemMentor => {
+  if (itemMentor.job.city === "Barcelona" && itemMentor.skills.includes("React")) {
+    console.log(`Hi, my name is ${itemMentor.firstName} ${itemMentor.lastName}. I work in Barcelona and i know React.`);
+  }
+  //step 2:
+  itemMentor.class = "Jun1"
+  itemMentor.skills.push("SQL")
+  });
+  
+  /*2. To those that work in Barcelona, set "Jun1" in the class attribute, 
+  and add a new skill to the list "SQL".
+  To add elements in an array you can use .push()
+  */
+
+  //3. Create an object method with the name .addSkill() to be able to add skills from it
+  
+  //4. Create a function to add a skill to all members in a list of mentors
+  function addSkillF(arrMentors, newSkill) {
+    return arrMentors.forEach(itemM => itemM.addSkill(newSkill)); 
+  }
+
+  console.log(addSkillF(mentors, "React"));
+  //5. Create a function to remove a skill to all members in a list of mentors
+function removeSkill(arrMentors, rSkill) {
+  return arrMentors.forEach(itemM => itemM.skills = itemM.skills.filter(item => item !== rSkill))
+}
+
+console.log(removeSkill(mentors, "React"));
+
+//6. Create a function mentorWithMoreSkills() that returns the name of the mentor with more number of skills
+function mentorWithMoreSkills(arr) {
+  let moreSkilled = arr[0];
+
+  arr.forEach(item => {
+    if(item.skills.length > moreSkilled.skills.length) {
+      moreSkilled = item;
+    }
+  })
+
+  return moreSkilled.firstName;
+}
+console.log(mentorWithMoreSkills(mentors))
+
+//7. Create an object method .addStudentLikes() that increments by one the attribute studentLikes
+console.log(mentors)
