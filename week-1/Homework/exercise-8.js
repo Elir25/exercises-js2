@@ -51,7 +51,7 @@ var mentors = [
     class: "Mar1",
     studentLikes: 0,
     addStudentLikes: function() {
-      return this.studentLikes = this.studentLikes + 1;
+      this.studentLikes = this.studentLikes + 1;
     },
     addSkill: function(newSkill) {
       return this.skills.push(newSkill)
@@ -69,6 +69,9 @@ var mentors = [
     skills: ["Play football"],
     class: "Mar3",
     studentLikes: 0,
+    addStudentLikes: function() {
+      this.studentLikes = this.studentLikes + 1;
+    },
     addSkill: function(newSkill) {
       return this.skills.push(newSkill)
     },
@@ -85,6 +88,9 @@ var mentors = [
     skills: ["React","Angular","Python","Node"],
     class: "Mar4",
     studentLikes: 0,
+    addStudentLikes: function() {
+      this.studentLikes = this.studentLikes + 1;
+    },
     addSkill: function(newSkill) {
       return this.skills.push(newSkill)
     },
@@ -101,6 +107,9 @@ var mentors = [
     skills: ["HTML","JS","React"],
     class: "Mar2",
     studentLikes: 0,
+    addStudentLikes: function() {
+      this.studentLikes = this.studentLikes + 1;
+    },
     addSkill: function(newSkill) {
       return this.skills.push(newSkill)
     },
@@ -166,4 +175,11 @@ function mentorWithMoreSkills(arr) {
 console.log(mentorWithMoreSkills(mentors))
 
 //7. Create an object method .addStudentLikes() that increments by one the attribute studentLikes
+
+//8. Create a function that adds a student like to all mentors in the array
+
+function addAlikeForAll(arrMentors) {
+  return arrMentors.forEach(mentor => mentor.studentLikes = mentor.studentLikes + 1);
+}
+console.log(addAlikeForAll(mentors));
 console.log(mentors)

@@ -27,7 +27,32 @@ In addition will substract 1 in the product stock of bought products
 6. If there is not enough stock, the product cannot be added to the shopping cart
 */
 
-var products = [];
+var products = [
+  {
+    id: 1,
+  name: "Toaster X56 Plus",
+  price: 12.98,
+  stock: 105
+  },
+  {
+    id: 2,
+  name: "Watch Rocker",
+  price: 9.99,
+  stock: 2
+  },
+  {
+    id: 3,
+    name: "phone case",
+    price: 11.70,
+    stock: 17
+  },
+  {
+    id: 4,
+    name: "body lotion",
+    price: 30.50,
+    stock: 5
+  },
+];
 
 var product1 = {
   id: 1,
@@ -50,8 +75,10 @@ var shoppingCart = {
   selectedProducts: []
 };
 
+/*3. Create a function addToShoppingCart to add a product to the shopping cart list giving the product id,
+the function will add the product to the selectedProduct list, and add the price to the totalPrice*/
 function addToShoppingCart(id){
-
+    return shoppingCart.selectedProducts = shoppingCart.selectedProducts + products.id;
 }
 
 function removeFromShoppingCart(id){
