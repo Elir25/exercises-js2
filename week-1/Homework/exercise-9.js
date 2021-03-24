@@ -27,48 +27,38 @@ In addition will substract 1 in the product stock of bought products
 6. If there is not enough stock, the product cannot be added to the shopping cart
 */
 
-var products = [
-  {
-    id: 1,
-  name: "Toaster X56 Plus",
-  price: 12.98,
-  stock: 105
-  },
-  {
-    id: 2,
-  name: "Watch Rocker",
-  price: 9.99,
-  stock: 2
-  },
-  {
-    id: 3,
-    name: "phone case",
-    price: 11.70,
-    stock: 17
-  },
-  {
-    id: 4,
-    name: "body lotion",
-    price: 30.50,
-    stock: 5
-  },
-];
+var products = [];
 
-var product1 = {
+product1 = {
   id: 1,
   name: "Toaster X56 Plus",
   price: 12.98,
   stock: 105
 };
-var product2 = {
+product2 = {
   id: 2,
   name: "Watch Rocker",
   price: 9.99,
   stock: 2
 };
+product3 = {
+  id: 3,
+  name: "phone case",
+  price: 11.70,
+  stock: 17
+};
+product4 = {
+  id: 4,
+  name: "body lotion",
+  price: 30.50,
+  stock: 5
+};
+
 
 products.push(product1);
 products.push(product2);
+products.push(product3);
+products.push(product4);
 
 var shoppingCart = {
   totalPrice: 0,
@@ -78,15 +68,25 @@ var shoppingCart = {
 /*3. Create a function addToShoppingCart to add a product to the shopping cart list giving the product id,
 the function will add the product to the selectedProduct list, and add the price to the totalPrice*/
 function addToShoppingCart(id){
-    return shoppingCart.selectedProducts = shoppingCart.selectedProducts + products.id;
+    let theseProducts = products.find(item => item.id === id)
+    //if (theseProducts.stock <= 0) {
+      //return `there is `
+    //}
+    shoppingCart.selectedProducts.push(theseProducts);
+    shoppingCart.totalPrice += theseProducts.price;
 }
+
+//4. Create the function removeFrom ShoppingCart to remove a product that a client does not like anymore
 
 function removeFromShoppingCart(id){
+  return shoppingCart.selectedProducts.filter(item => item.id !== id);
 
 }
 
-function shop(){
-
+//5. Create the function shop, the function will empty the list and set 0 in the totalPrice of the shopping cart
+//In addition will substract 1 in the product stock of bought products
+function shop(shoppingCartArr){
+  
 }
 
 //results
