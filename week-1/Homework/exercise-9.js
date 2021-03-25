@@ -79,14 +79,19 @@ function addToShoppingCart(id){
 //4. Create the function removeFrom ShoppingCart to remove a product that a client does not like anymore
 
 function removeFromShoppingCart(id){
-  return shoppingCart.selectedProducts.filter(item => item.id !== id);
-
+  let filterOne = shoppingCart.selectedProducts.filter(item => item.id !== id);
+  shoppingCart.selectedProducts = filterOne 
+  let minusId = products.find(item => item.id === id)
+  shoppingCart.totalPrice = shoppingCart.totalPrice - minusId.price;
 }
 
 //5. Create the function shop, the function will empty the list and set 0 in the totalPrice of the shopping cart
 //In addition will substract 1 in the product stock of bought products
+
+//6. If there is not enough stock, the product cannot be added to the shopping cart
 function shop(){
-  
+  shoppingCart.totalPrice = 0
+  shoppingCart.selectedProducts = []
 }
 
 //results

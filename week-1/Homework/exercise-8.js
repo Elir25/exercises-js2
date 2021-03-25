@@ -41,27 +41,27 @@ function removeSkill(mentors,newSkill){
 function addStudentLikes(mentors){
   //your code here
 }
-*/ 
+*/
 
 var mentors = [
   {
     firstName: "Antonio",
     lastName: "Miranda",
-    skills: ["JS","React","Node"],
+    skills: ["JS", "React", "Node"],
     class: "Mar1",
     studentLikes: 0,
-    addStudentLikes: function() {
+    addStudentLikes: function () {
       this.studentLikes = this.studentLikes + 1;
     },
-    addSkill: function(newSkill) {
+    addSkill: function (newSkill) {
       return this.skills.push(newSkill)
     },
     job:
-      {
-        company: "Google",
-        position: "Senior developer",
-        city: "Barcelona"
-      }
+    {
+      company: "Google",
+      position: "Senior developer",
+      city: "Barcelona"
+    }
   },
   {
     firstName: "Leo",
@@ -69,60 +69,61 @@ var mentors = [
     skills: ["Play football"],
     class: "Mar3",
     studentLikes: 0,
-    addStudentLikes: function() {
+    addStudentLikes: function () {
       this.studentLikes = this.studentLikes + 1;
     },
-    addSkill: function(newSkill) {
+    addSkill: function (newSkill) {
       return this.skills.push(newSkill)
     },
     job:
-      {
-        company: "FC Barcelona",
-        position: "Player",
-        city: "Barcelona"
-      }
+    {
+      company: "FC Barcelona",
+      position: "Player",
+      city: "Barcelona"
+    }
   },
   {
     firstName: "John",
     lastName: "VanDamme",
-    skills: ["React","Angular","Python","Node"],
+    skills: ["React", "Angular", "Python", "Node"],
     class: "Mar4",
     studentLikes: 0,
-    addStudentLikes: function() {
+    addStudentLikes: function () {
       this.studentLikes = this.studentLikes + 1;
     },
-    addSkill: function(newSkill) {
+    addSkill: function (newSkill) {
       return this.skills.push(newSkill)
     },
     job:
-      {
-        company: "Facebook",
-        position: "Software Manager",
-        city: "Chicago"
-      }
-  },  
+    {
+      company: "Facebook",
+      position: "Software Manager",
+      city: "Chicago"
+    }
+  },
   {
     firstName: "Giorgio",
     lastName: "Polvara",
-    skills: ["HTML","JS","React"],
+    skills: ["HTML", "JS", "React"],
     class: "Mar2",
     studentLikes: 0,
-    addStudentLikes: function() {
+    addStudentLikes: function () {
       this.studentLikes = this.studentLikes + 1;
     },
-    addSkill: function(newSkill) {
+    addSkill: function (newSkill) {
       return this.skills.push(newSkill)
     },
     job:
-      {
-        company: "Amazon",
-        position: "Senior developer",
-        city: "Barcelona"
-      }
+    {
+      company: "Amazon",
+      position: "Senior developer",
+      city: "Barcelona"
+    }
   },
 
 ];
-
+/*Ex 8/step 2: complete the condition: to those that work in Barcelona, set “Jun1” in the class attribute, and add a new skill to the list “SQL”.(at the moment you’re adding it to all the mentors)
+*Ex 9/uncompleted steps 4, 5 and 6.*/
 
 //YOUR CODE HERE
 
@@ -134,26 +135,27 @@ mentors that are in Barcelona and one of the skills is React
 mentors.forEach(itemMentor => {
   if (itemMentor.job.city === "Barcelona" && itemMentor.skills.includes("React")) {
     console.log(`Hi, my name is ${itemMentor.firstName} ${itemMentor.lastName}. I work in Barcelona and i know React.`);
+    itemMentor.class = "Jun1"
+    itemMentor.skills.push("SQL")
   }
   //step 2:
-  itemMentor.class = "Jun1"
-  itemMentor.skills.push("SQL")
-  });
-  
-  /*2. To those that work in Barcelona, set "Jun1" in the class attribute, 
-  and add a new skill to the list "SQL".
-  To add elements in an array you can use .push()
-  */
 
-  //3. Create an object method with the name .addSkill() to be able to add skills from it
-  
-  //4. Create a function to add a skill to all members in a list of mentors
-  function addSkillF(arrMentors, newSkill) {
-    return arrMentors.forEach(itemM => itemM.addSkill(newSkill)); 
-  }
+});
 
-  console.log(addSkillF(mentors, "React"));
-  //5. Create a function to remove a skill to all members in a list of mentors
+/*2. To those that work in Barcelona, set "Jun1" in the class attribute, 
+and add a new skill to the list "SQL".
+To add elements in an array you can use .push()
+*/
+
+//3. Create an object method with the name .addSkill() to be able to add skills from it
+
+//4. Create a function to add a skill to all members in a list of mentors
+function addSkillF(arrMentors, newSkill) {
+  return arrMentors.forEach(itemM => itemM.addSkill(newSkill));
+}
+
+console.log(addSkillF(mentors, "React"));
+//5. Create a function to remove a skill to all members in a list of mentors
 function removeSkill(arrMentors, rSkill) {
   return arrMentors.forEach(itemM => itemM.skills = itemM.skills.filter(item => item !== rSkill))
 }
@@ -165,7 +167,7 @@ function mentorWithMoreSkills(arr) {
   let moreSkilled = arr[0];
 
   arr.forEach(item => {
-    if(item.skills.length > moreSkilled.skills.length) {
+    if (item.skills.length > moreSkilled.skills.length) {
       moreSkilled = item;
     }
   })
