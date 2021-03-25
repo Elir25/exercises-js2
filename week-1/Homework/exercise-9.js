@@ -85,7 +85,7 @@ function removeFromShoppingCart(id){
 
 //5. Create the function shop, the function will empty the list and set 0 in the totalPrice of the shopping cart
 //In addition will substract 1 in the product stock of bought products
-function shop(shoppingCartArr){
+function shop(){
   
 }
 
