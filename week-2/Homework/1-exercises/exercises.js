@@ -13,8 +13,25 @@
  *      .....
  * </div>
  */
+
 function exerciseOne(arrayOfPeople) {
-  let content = document.querySelector("#content");
+  let content = document.querySelector("#content"); //here is defined where the code should be
+  //my code
+  /*let tittle = document.createElement('h1')
+  tittle.textContent = "esto es el h1 con el nombre"
+  let subTitlle = document.createElement('h2')
+  subTitlle.textContent = "este es el sub"
+  content.appendChild(tittle)
+  content.appendChild(subTitlle)*/
+  arrayOfPeople.forEach( person => {
+    let tittle = document.createElement('h1')
+    tittle.innerText = person.name;
+    document.body.appendChild(tittle)
+    let subTitlle = document.createElement('h2')
+    subTitlle.innerText = person.job;
+    document.body.appendChild(subTitlle)
+  });
+  
 }
 
 /**
@@ -24,8 +41,10 @@ function exerciseOne(arrayOfPeople) {
  * All of your HTML should go inside the Div tag with the id "content".
  *
  */
+
 function exerciseTwo(shopping) {
   //Write your code in here
+  
 }
 
 /**
