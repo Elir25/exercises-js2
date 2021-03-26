@@ -44,7 +44,16 @@ function exerciseOne(arrayOfPeople) {
 
 function exerciseTwo(shopping) {
   //Write your code in here
-  
+  let content = document.querySelector("#content");
+  let newList = document.createElement('ul')
+
+  shopping.forEach(item => {
+    let listItem = document.createElement('li');
+    listItem.textContent = item;
+    document.body.appendChild(listItem)
+
+  })
+
 }
 
 /**
