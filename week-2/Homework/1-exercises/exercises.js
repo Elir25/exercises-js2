@@ -51,7 +51,6 @@ function exerciseTwo(shopping) {
     let listItem = document.createElement('li');
     listItem.textContent = item;
     document.body.appendChild(listItem)
-
   })
 
 }
@@ -87,6 +86,30 @@ function exerciseTwo(shopping) {
 **/
 function exerciseThree(books) {
   //Write your code in here
+  let content = document.querySelector("#content");
+  let bookList = document.createElement('ul') //create the list
+
+  books.forEach(itemB => {
+    let bookListItem = document.createElement('li');
+    bookListItem.textContent = itemB.title + " - " + itemB.author;
+    document.body.appendChild(bookListItem);
+    let bookImage = document.createElement('img');//trying to create the link with the img link
+
+    //change background color using if statement
+    /*if ( itemB.alreadyRead === true) {
+      bookListItem.style.backgroundColor = 'green';
+    } else bookListItem.style.backgroundColor = 'red';*/
+    
+    //change the background color using ternary operator 
+    itemB.alreadyRead === true ? bookListItem.style.backgroundColor = 'green' : bookListItem.style.backgroundColor = 'red'
+
+  });
+  /*books.forEach(itemB => {
+    let bookTittleandAuthor = document.createElement('p');
+    bookTittleandAuthor.textContent = itemB.title + " - " + itemB.author;
+    document.body.appendChild(bookTittleandAuthor);
+
+  })*/
 }
 
 //
