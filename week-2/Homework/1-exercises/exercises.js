@@ -7,29 +7,19 @@
  *
  * All of your HTML should go inside the Div tag with the id "content".
  *
- * <div id="content">
- *      <h1>{Name Here}</h1>
- *      <h2>{Job Here}</h2>
- *      .....
- * </div>
  */
 
+ //let content = document.querySelector("#content");
 function exerciseOne(arrayOfPeople) {
-  let content = document.querySelector("#content"); //here is defined where the code should be
+  let content = document.querySelector("#content");
   //my code
-  /*let tittle = document.createElement('h1')
-  tittle.textContent = "esto es el h1 con el nombre"
-  let subTitlle = document.createElement('h2')
-  subTitlle.textContent = "este es el sub"
-  content.appendChild(tittle)
-  content.appendChild(subTitlle)*/
   arrayOfPeople.forEach( person => {
     let tittle = document.createElement('h1')
     tittle.innerText = person.name;
-    document.body.appendChild(tittle)
+    content.appendChild(tittle)
     let subTitlle = document.createElement('h2')
     subTitlle.innerText = person.job;
-    document.body.appendChild(subTitlle)
+    content.appendChild(subTitlle)
   });
   
 }
@@ -42,15 +32,16 @@ function exerciseOne(arrayOfPeople) {
  *
  */
 
+
 function exerciseTwo(shopping) {
   //Write your code in here
   let content = document.querySelector("#content");
-  let newList = document.createElement('ul')
+  let newList = document.createElement('ul');
 
   shopping.forEach(item => {
     let listItem = document.createElement('li');
     listItem.textContent = item;
-    document.body.appendChild(listItem)
+    content.appendChild(listItem)//poner este elemento afuera del forEach
   })
 
 }
@@ -90,26 +81,22 @@ function exerciseThree(books) {
   let bookList = document.createElement('ul') //create the list
 
   books.forEach(itemB => {
+
     let bookListItem = document.createElement('li');
-    bookListItem.textContent = itemB.title + " - " + itemB.author;
-    document.body.appendChild(bookListItem);
-    let bookImage = document.createElement('img');//trying to create the link with the img link
-
-    //change background color using if statement
-    /*if ( itemB.alreadyRead === true) {
-      bookListItem.style.backgroundColor = 'green';
-    } else bookListItem.style.backgroundColor = 'red';*/
+    let text = document.createElement('p');
+    let img = document.createElement('img');
     
-    //change the background color using ternary operator 
-    itemB.alreadyRead === true ? bookListItem.style.backgroundColor = 'green' : bookListItem.style.backgroundColor = 'red'
-
+    text.textContent = itemB.title + " - " + itemB.author;
+    img.setAttribute('src', itemB.url)
+    
+    bookListItem.style.backgroundColor = itemB.alreadyRead ? 'green' : 'red';
+    bookListItem.appendChild(text)
+    bookListItem.appendChild(img)
+    bookList.appendChild(bookListItem)
+    
   });
-  /*books.forEach(itemB => {
-    let bookTittleandAuthor = document.createElement('p');
-    bookTittleandAuthor.textContent = itemB.title + " - " + itemB.author;
-    document.body.appendChild(bookTittleandAuthor);
-
-  })*/
+  content.appendChild(bookList)
+  
 }
 
 //
@@ -138,17 +125,20 @@ const books = [
   {
     title: "The Design of Everyday Things",
     author: "Don Norman",
-    alreadyRead: false
+    alreadyRead: false,
+    url: 'https://images-na.ssl-images-amazon.com/images/I/410RTQezHYL._SX326_BO1,204,203,200_.jpg' 
   },
   {
     title: "The Most Human Human",
     author: "Brian Christian",
-    alreadyRead: true
+    alreadyRead: true,
+    url: 'https://images-na.ssl-images-amazon.com/images/I/71HMyqG6MRL.jpg',
   },
   {
     title: "The Pragmatic Programmer",
     author: "Andrew Hunt",
-    alreadyRead: true
+    alreadyRead: true,
+    url: 'https://m.media-amazon.com/images/I/41uPjEenkFL._SX260_.jpg',
   }
 ];
 
