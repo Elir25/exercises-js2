@@ -88,6 +88,7 @@ function exerciseThree(books) {
     
     text.textContent = itemB.title + " - " + itemB.author;
     img.setAttribute('src', itemB.url)
+    img.setAttribute('width', 200)
     
     bookListItem.style.backgroundColor = itemB.alreadyRead ? 'green' : 'red';
     bookListItem.appendChild(text)

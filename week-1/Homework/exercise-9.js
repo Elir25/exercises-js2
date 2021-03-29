@@ -69,9 +69,10 @@ var shoppingCart = {
 the function will add the product to the selectedProduct list, and add the price to the totalPrice*/
 function addToShoppingCart(id){
     let theseProducts = products.find(item => item.id === id)
-    //if (theseProducts.stock <= 0) {
-      //return `there is `
-    //}
+    if (theseProducts.stock <= 0) {
+      console.log("Can not add this product since it's out of stock");
+      return;
+    }
     shoppingCart.selectedProducts.push(theseProducts);
     shoppingCart.totalPrice += theseProducts.price;
 }
@@ -83,6 +84,7 @@ function removeFromShoppingCart(id){
   shoppingCart.selectedProducts = filterOne 
   let minusId = products.find(item => item.id === id)
   shoppingCart.totalPrice = shoppingCart.totalPrice - minusId.price;
+
 }
 
 //5. Create the function shop, the function will empty the list and set 0 in the totalPrice of the shopping cart
@@ -90,8 +92,11 @@ function removeFromShoppingCart(id){
 
 //6. If there is not enough stock, the product cannot be added to the shopping cart
 function shop(){
+  //Recorrer productos para restar 1 a cada stock de ese products
+  shoppingCart.selectedProducts.forEach(p => p.stock = p.stock - 1)
   shoppingCart.totalPrice = 0
   shoppingCart.selectedProducts = []
+  
 }
 
 //results
@@ -120,3 +125,4 @@ console.log("Step 5");
 console.log("Total Price = " + shoppingCart.totalPrice);
 console.log("Number of Elements = " + shoppingCart.selectedProducts.length);
 console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name));
+

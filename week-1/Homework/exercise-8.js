@@ -122,8 +122,6 @@ var mentors = [
   },
 
 ];
-/*Ex 8/step 2: complete the condition: to those that work in Barcelona, set “Jun1” in the class attribute, and add a new skill to the list “SQL”.(at the moment you’re adding it to all the mentors)
-*Ex 9/uncompleted steps 4, 5 and 6.*/
 
 //YOUR CODE HERE
 
@@ -135,18 +133,26 @@ mentors that are in Barcelona and one of the skills is React
 mentors.forEach(itemMentor => {
   if (itemMentor.job.city === "Barcelona" && itemMentor.skills.includes("React")) {
     console.log(`Hi, my name is ${itemMentor.firstName} ${itemMentor.lastName}. I work in Barcelona and i know React.`);
+    
+  }
+  //step 2:
+
+});
+
+
+/*2. To those that work in Barcelona, set "Jun1" in the class attribute
+and add a new skill to the list "SQL".
+To add elements in an array you can use .push()
+*/
+mentors.forEach(itemMentor => {
+  if (itemMentor.job.city === "Barcelona") {
+
     itemMentor.class = "Jun1"
     itemMentor.skills.push("SQL")
   }
   //step 2:
 
 });
-
-/*2. To those that work in Barcelona, set "Jun1" in the class attribute, 
-and add a new skill to the list "SQL".
-To add elements in an array you can use .push()
-*/
-
 //3. Create an object method with the name .addSkill() to be able to add skills from it
 
 //4. Create a function to add a skill to all members in a list of mentors
@@ -160,6 +166,7 @@ function removeSkill(arrMentors, rSkill) {
   return arrMentors.forEach(itemM => itemM.skills = itemM.skills.filter(item => item !== rSkill))
 }
 
+console.log(mentors)
 console.log(removeSkill(mentors, "React"));
 
 //6. Create a function mentorWithMoreSkills() that returns the name of the mentor with more number of skills
@@ -184,4 +191,4 @@ function addAlikeForAll(arrMentors) {
   return arrMentors.forEach(mentor => mentor.studentLikes = mentor.studentLikes + 1);
 }
 console.log(addAlikeForAll(mentors));
-console.log(mentors)
+//console.log(mentors)
