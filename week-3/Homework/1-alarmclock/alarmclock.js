@@ -1,25 +1,47 @@
+//let timerID;
+let changeTime;
 function setAlarm() {
-  const input = document.querySelector('#alarmSet')
-  const tittle = document.querySelector('#timeRemaining')
+  let alarmTime = document.querySelector('#alarmSet').valueAsNumber;
+  let text = document.querySelector('#timeRemaining')
+  let currentTime = alarmTime;
+  let pause = document.querySelector('#pause')
+  
+  changeTime = setInterval(
+    function (num) {
+      if (currentTime == 0) {
+        //stop the timer here
+        clearInterval(changeTime);
+        //grab body and change color when it stops
+        let bodyColor = document.querySelector('body');
+        bodyColor.style.backgroundColor = "red";
+        //play the alarm
+        playAlarm()
+      }
+      /*if (currentTime >= 0) {
+        text.innerText = "Time remaining: 00:0" + currentTime;
+      }*/
+      if (currentTime >= 10) {
+        text.innerText = "Time remaining: 00:" + currentTime;
+      } else if (currentTime <= 10 && currentTime >= 0) {
+        text.innerText = "Time remaining: 00:0" + currentTime;
+      } 
+      
+      //pause.addEventListener('click', () => {
+        //pauseAlarm()
+      //}) trying to pause the alarm
+      currentTime = currentTime -1
+    },
+    1000
+  );
+  //change the background color to white when it stops
+  document.querySelector('#stop').addEventListener('click', () => {
+  document.body.style.backgroundColor = 'white';
+  });
 
-  const secondsFormated = formatSeconds(input.value)
-  tittle.textContent = `Time Remaining: ${secondsFormated}`
-  setInterval(()=> {
-    input.value = input.value -1
-  },1000)
 }
 
-/*
-  90  -> 01:30
-  65  -> 01:05
-  120 -> 02:00
-  677 -> 11:17
-*/
-function formatSeconds(seconds){
-   
-  //const result = seconds / 60
-  return `00:0${seconds}`
-}
+
+
 
 // DO NOT EDIT BELOW HERE
 

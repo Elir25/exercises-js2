@@ -57,11 +57,57 @@ var movies = [
     haveWatched: false,
   },
 ];
+//function to add movies to the screen -my
+function addMoviesToScreen(movie) {
+  let createElement = document.createElement('p');
+  let findElements = document.querySelector('#all-movies');
+  createElement.textContent = movie.title + ' - ' + movie.director
+  findElements.appendChild(createElement);
+  let movieNumber = document.querySelector('#movies-number');
+    movieNumber.innerText = movies.length;
+}
 
 // create showMovies function
+/*function showMovies() {
+  setTimeout(() => {
 
+    movies.forEach(element => {
+      let p = document.createElement('p');
+      let div = document.querySelector('#all-movies')
+      p.textContent = element.title + ' - ' + element.director
+      div.appendChild(p)
+    });
+    let movieNumber = document.querySelector('#movies-number')
+    movieNumber.innerText = movies.length
+  }, 1000)
+  
+}*/
 
 // create a new movie object for your favorite movie
-
+let myMovie =  {
+  title: "Pirates of the Caribbean",
+  director: "Espen Sandberg",
+  type: "sci-fi",
+  haveWatched: true,
+}
 
 // create addMovies function
+function addMovie(newMovie) {
+  setTimeout(() => {
+    movies.push(newMovie)
+  }, 2000);
+}
+
+//NEW SHOWMOVIES FUNCTION
+function showMovies(callbackFunc) {
+  setTimeout(function() {
+    for (let movie of movies) {
+      callbackFunc(movie);
+    }
+  }, 1000)
+}
+
+//addMovie(myMovie)
+showMovies(addMoviesToScreen);
+
+addMovie(myMovie, addMoviesToScreen) //still have to add my vovie to the screen
