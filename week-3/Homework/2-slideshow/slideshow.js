@@ -2,6 +2,7 @@
 let i = 0;
 let images = [];
 let time = 2000;
+let interval;
 //images 
 images[0] = "images/anastasia-ulyanova-aFqfi1ASUJc-unsplash.jpg";
 images[1] = "images/jamie-street-uNNCs5kL70Q-unsplash.jpg";
@@ -15,16 +16,18 @@ let autoBtn = document.querySelector('#auto');
 
 //change the images manually (forward)
 forwardBtn.addEventListener('click', () => {
-  document.slide.src = images[i];
+  clearInterval(interval);
   if (i < images.length - 1) {
     i ++;
   } else i = 0;
+  document.slide.src = images[i];
 });
 //change the images backwards (back)
 backBtn.addEventListener('click', () => {
-  /** for (var i = arr.length - 1; i >= 0; i--) {
-	console.log(arr[i]);
-}*/
+  clearInterval(interval);
+  if (i > 0) {
+    i --;
+  } else i = images.length -1;
   document.slide.src = images[i];
   
 });
@@ -33,12 +36,16 @@ backBtn.addEventListener('click', () => {
 autoBtn.addEventListener('click', changeImg)
 
 function changeImg() {
-  document.slide.src = images[i];
-  if (i < images.length - 1) {
-    i ++;
-  } else i = 0;
+  clearInterval(interval);
+  interval = setInterval(() => {
+    if (i < images.length - 1) {
+      i ++;
+    } else i = 0;
+    document.slide.src = images[i];
+  }, time);
 
-  setTimeout("changeImg()", time); //""?
+
+  //setTimeout(changeImg, time); //""?
 }
 
 //window.onload = changeImg;

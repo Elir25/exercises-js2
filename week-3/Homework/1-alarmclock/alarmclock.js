@@ -1,5 +1,7 @@
 //let timerID;
 let changeTime;
+let isPaused = false;
+
 function setAlarm() {
   let alarmTime = document.querySelector('#alarmSet').valueAsNumber;
   let text = document.querySelector('#timeRemaining')
@@ -8,6 +10,9 @@ function setAlarm() {
   
   changeTime = setInterval(
     function (num) {
+      if(isPaused)
+        return;
+
       if (currentTime == 0) {
         //stop the timer here
         clearInterval(changeTime);
@@ -33,14 +38,26 @@ function setAlarm() {
     },
     1000
   );
-  //change the background color to white when it stops
-  document.querySelector('#stop').addEventListener('click', () => {
-  document.body.style.backgroundColor = 'white';
-  });
 
 }
 
+const stopAlarm = ()  => {
+  currentTime = 0;
+  text.innerText = "Time remaining: 00:00";
+  clearInterval(changeTime);
+  document.body.style.backgroundColor = 'white';
+}
 
+const pauseAlarm = () => {
+  audio.pause();
+  if(!isPaused){
+    isPaused = true;
+    document.getElementById("pause").textContent = "Resume alarm";
+  } else {
+    isPaused = false;
+    document.getElementById("pause").textContent = "Pause alarm";
+  }
+}
 
 
 // DO NOT EDIT BELOW HERE
@@ -53,6 +70,10 @@ function setup() {
   });
 
   document.getElementById("stop").addEventListener("click", () => {
+    stopAlarm();
+  });
+
+  document.getElementById("pause").addEventListener("click", () => {
     pauseAlarm();
   });
 }
@@ -61,8 +82,6 @@ function playAlarm() {
   audio.play();
 }
 
-function pauseAlarm() {
-  audio.pause();
-}
+
 
 window.onload = setup;
