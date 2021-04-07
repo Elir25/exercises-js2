@@ -13,6 +13,7 @@ images[3] = "images/tran-mau-tri-tam--81lVsfM4gQ-unsplash.jpg";
 let backBtn = document.querySelector('#back');
 let forwardBtn = document.querySelector('#forward');
 let autoBtn = document.querySelector('#auto');
+let autoBack = document.querySelector('#auto-back');
 
 //change the images manually (forward)
 forwardBtn.addEventListener('click', () => {
@@ -22,6 +23,7 @@ forwardBtn.addEventListener('click', () => {
   } else i = 0;
   document.slide.src = images[i];
 });
+
 //change the images backwards (back)
 backBtn.addEventListener('click', () => {
   clearInterval(interval);
@@ -32,7 +34,7 @@ backBtn.addEventListener('click', () => {
   
 });
 
-//change the images every 3 seconds (auto)
+//change the images every 3 seconds (auto-forward)
 autoBtn.addEventListener('click', changeImg)
 
 function changeImg() {
@@ -45,9 +47,22 @@ function changeImg() {
   }, time);
 
 
-  //setTimeout(changeImg, time); //""?
+  //setTimeout(changeImg, time);
 }
 
+//change the images every 3 seconds (auto-back)
+autoBack.addEventListener('click', changeBackAuto);
+
+function changeBackAuto() {
+  clearInterval(interval);
+  interval = setInterval(() => {
+    if (i > 0) {
+      i --;
+    } else i = images.length - 1;
+    document.slide.src = images[i];
+  }, time);
+
+}
 //window.onload = changeImg;
 
 

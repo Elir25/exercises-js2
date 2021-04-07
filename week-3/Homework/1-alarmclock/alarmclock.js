@@ -19,12 +19,10 @@ function setAlarm() {
         //grab body and change color when it stops
         let bodyColor = document.querySelector('body');
         bodyColor.style.backgroundColor = "red";
-        //play the alarm
+        
         playAlarm()
       }
-      /*if (currentTime >= 0) {
-        text.innerText = "Time remaining: 00:0" + currentTime;
-      }*/
+      
       if (currentTime >= 10) {
         text.innerText = "Time remaining: 00:" + currentTime;
       } else if (currentTime <= 10 && currentTime >= 0) {
@@ -46,6 +44,7 @@ const stopAlarm = ()  => {
   text.innerText = "Time remaining: 00:00";
   clearInterval(changeTime);
   document.body.style.backgroundColor = 'white';
+  audio.pause();
 }
 
 const pauseAlarm = () => {
